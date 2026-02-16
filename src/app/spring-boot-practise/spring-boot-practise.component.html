@@ -1,0 +1,62 @@
+<p>spring-boot-practise works Ritesh</p>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>CompanyId</th>
+      <th>CompanyName</th>
+      <th>CompanyAddress</th>
+      <th>CompanyTotalMembers</th>
+      <th>OwnerName</th>
+      <th>CompanyProducts</th>
+      <th>WorkingHours</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of listOfComapanyDetails">
+      <td><button (click)="deleteCompanyData(data.companyId)">delete</button>{{data.companyId}}<button (click)="getCompanyDataById(data.companyId)">edit</button></td>
+      <td>{{data.companyName}}</td>
+      <td>{{data.companyAddress}}</td>
+      <td>{{data.companyTotalMembers}}</td>
+      <td>{{data.ownerName}}</td>
+      <td>{{data.companyProducts}}</td>
+      <td>{{data.workingHours}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<br>
+<br>
+
+<form>
+  <label for="companyName">CompanyName:</label>
+  <input type="text" id="companyName" name="companyName" [(ngModel)]="companyName" required>
+
+  <label for="companyAddress">CompanyAddress:</label>
+  <input type="text" id="companyAddress" name="companyAddress" [(ngModel)]="companyAddress" required>
+
+  <label for="companyTotalMembers">CompanyTotalMembers:</label>
+  <input type="text" id="companyTotalMembers" name="companyTotalMembers" [(ngModel)]="companyTotalMembers" required>
+
+  <label for="ownerName">OwnerName:</label>
+  <input type="text" id="ownerName" name="ownerName" [(ngModel)]="ownerName" required>
+
+  <label for="companyProducts">CompanyProducts:</label>
+  <input type="text" id="companyProducts" name="companyProducts" [(ngModel)]="companyProducts" required>
+
+  <label for="workingHours">WorkingHours:</label>
+  <input type="text" id="workingHours" name="workingHours" [(ngModel)]="workingHours" required>
+
+  <!-- <button type="submit" (click)="submitCompanyData()">Submit</button> -->
+   <button *ngIf="!company.companyId" type="submit" (click)="submitCompanyData()">
+   Create
+   </button>
+
+   <button *ngIf="company.companyId" type="submit" (click)="updateCompanyData()">
+   Update
+   </button>
+
+</form>
+
+
