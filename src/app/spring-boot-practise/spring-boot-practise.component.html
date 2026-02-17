@@ -1,6 +1,6 @@
 <p>spring-boot-practise works Ritesh</p>
 
-<table border="1" cellpadding="8" cellspacing="0">
+<!-- <table border="1" cellpadding="8" cellspacing="0">
   <thead>
     <tr>
       <th>CompanyId</th>
@@ -23,7 +23,68 @@
       <td>{{data.workingHours}}</td>
     </tr>
   </tbody>
+  <select (change)="perPageChange()" [(ngModel)]="perPage">
+      <option [ngValue]="2">2</option>
+      <option [ngValue]="4">4</option>
+      <option [ngValue]="6">6</option>
+      <option [ngValue]="8">8</option>
+      <option [ngValue]="10">10</option>
+    </select>
+     <span class="f-13">Showing {{ count!=0?lowerBound:0}} to
+                                {{upperBound>count?count:upperBound}} of
+                                {{count}}
+     </span>
+     <button [disabled]="lowerBound==1" (click)="prevPage()">prevPage</button>
+     <button  [disabled]="upperBound >= count || count <= perPage" (click)="nextPage()">nextPage</button>
+</table> -->
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>CompanyId</th>
+      <th>CompanyName</th>
+      <th>CompanyAddress</th>
+      <th>CompanyTotalMembers</th>
+      <th>OwnerName</th>
+      <th>CompanyProducts</th>
+      <th>WorkingHours</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of listOfComapanyDetails">
+      <td>
+        <button (click)="deleteCompanyData(data.companyId)">Delete</button>
+        {{data.companyId}}
+        <button (click)="getCompanyDataById(data.companyId)">Edit</button>
+      </td>
+      <td>{{data.companyName}}</td>
+      <td>{{data.companyAddress}}</td>
+      <td>{{data.companyTotalMembers}}</td>
+      <td>{{data.ownerName}}</td>
+      <td>{{data.companyProducts}}</td>
+      <td>{{data.workingHours}}</td>
+      <td>
+      </td>
+    </tr>
+  </tbody>
 </table>
+
+<div class="pagination">
+  <select (change)="perPageChange()" [(ngModel)]="perPage">
+    <option [ngValue]="5">5</option>
+    <option [ngValue]="10">10</option>
+    <option [ngValue]="15">15</option>
+    <option [ngValue]="20">20</option>
+    <option [ngValue]="25">25</option>
+  </select>
+
+  <span class="f-13">
+    Showing {{ count !== 0 ? lowerBound : 1 }} of {{ count }}
+  </span>
+
+  <button [disabled]="lowerBound === 1" (click)="prevPage()">Prev</button>
+  <button [disabled]="totalRecords >= count" (click)="nextPage()">Next</button>
+</div>
 
 
 <br>

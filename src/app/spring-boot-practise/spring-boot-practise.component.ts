@@ -12,7 +12,11 @@ export class SpringBootPractiseComponent implements OnInit {
   public listOfComapanyDetails: any []=[];
   public company : any = {};
   public count : any;
+  public perPage: number = 5;
   public companyId!: number;
+  public totalRecords : number = 5;
+  public lowerBound: number = 1;
+  public upperBound: number = 5;
   public companyName!: String | null;
   public companyAddress!: String | null;
   public companyTotalMembers!: String | null;
@@ -30,10 +34,17 @@ export class SpringBootPractiseComponent implements OnInit {
   }
 
   public listOfCompanyDetails(){
-  this.service.getCompanyDetailsList().subscribe(res=>{
+    let data ={
+    lowerBound : this.lowerBound,
+    upperBound : this.upperBound
+    }
+  this.service.getCompanyDetailsList(data.lowerBound,data.upperBound).subscribe(res=>{
   this.listOfComapanyDetails = res.companyFilter;
   this.count = res.count;
-  console.log(this.listOfComapanyDetails+this.count);
+  console.log(this.count);
+  console.log(this.lowerBound);
+  console.log(this.upperBound);
+  console.log(this.perPage+'perPage');
   })
   }
 
@@ -154,4 +165,26 @@ export class SpringBootPractiseComponent implements OnInit {
 
   }
 
+  public perPageChange() {
+    this.lowerBound = 1;
+    this.upperBound = this.perPage;
+    this.listOfCompanyDetails();
+  }
+
+  public nextPage() {
+    this.lowerBound = this.lowerBound+1; 
+    this.totalRecords = this.totalRecords + this.perPage;
+    console.log(this.totalRecords+'this.totalRecords')
+    this.listOfCompanyDetails();
+  }
+
+  public prevPage() {
+    this.lowerBound = this.lowerBound-1; 
+    if(this.lowerBound==1){
+     this.totalRecords = 5;
+    }
+    this.listOfCompanyDetails();
+  }
+
+  
 }

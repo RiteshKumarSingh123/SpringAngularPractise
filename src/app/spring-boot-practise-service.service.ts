@@ -10,9 +10,14 @@ export class SpringBootPractiseServiceService {
 
   constructor(private http:HttpClient) { }
 
-  public getCompanyDetailsList():Observable<any> {
-    return this.http.get<any>(`http://192.168.10.186:8585/company/getCompanyDetailsList`);
+  // public getCompanyDetailsList(company:any):Observable<any> {
+  //   return this.http.get<any>(`http://192.168.10.186:8585/company/getCompanyDetailsList?` + company);
+  // }
+
+  public getCompanyDetailsList(page: any,size:any): Observable<any> {
+  return this.http.get<any>(`http://192.168.10.186:8585/company/getCompanyDetailsList?company=&page=${page}&size=${size}`);
   }
+
 
   public saveCompany(company:any):Observable<any> {
     return this.http.post<any>(`http://192.168.10.186:8585/company/saveCompany`,company);
