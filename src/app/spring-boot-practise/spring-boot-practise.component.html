@@ -38,7 +38,24 @@
      <button  [disabled]="upperBound >= count || count <= perPage" (click)="nextPage()">nextPage</button>
 </table> -->
 
-<table border="1" cellpadding="8" cellspacing="0">
+<!-- app.component.html -->
+
+<nav class="navbar">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a routerLink="/worker" class="nav-link">Worker</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="/customer" class="nav-link">Customer</a>
+    </li>
+  </ul>
+</nav>
+
+<br>
+<br>
+
+<table class="company-table" border="1" cellpadding="8" cellspacing="0">
+  <caption>Company Information</caption>
   <thead>
     <tr>
       <th>CompanyId</th>
@@ -63,8 +80,6 @@
       <td>{{data.ownerName}}</td>
       <td>{{data.companyProducts}}</td>
       <td>{{data.workingHours}}</td>
-      <td>
-      </td>
     </tr>
   </tbody>
 </table>

@@ -1,0 +1,54 @@
+
+<nav class="navbar">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a routerLink="/company" class="nav-link">Back to Company</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="/worker" class="nav-link">Worker</a>
+    </li>
+  </ul>
+</nav>
+
+<br>
+<br>
+
+
+
+
+<table class="customers-table" border="1" cellpadding="8" cellspacing="0">
+    <caption>Customers Information</caption>
+    <thead>
+        <tr>
+            <th>CustomerId</th>
+            <th>CustomerName</th>
+            <th>CustomerAdress</th>
+            <th>CustomerAge</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let value of customerList">
+            <td>{{ value.customerId }}</td>
+            <td>{{ value.customerName }}</td>
+            <td>{{ value.customerAdress }}</td>
+            <td>{{ value.customerAge }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="pagination">
+  <select (change)="perPageChange()" [(ngModel)]="perPage">
+    <option [ngValue]="5">5</option>
+    <option [ngValue]="10">10</option>
+    <option [ngValue]="15">15</option>
+    <option [ngValue]="20">20</option>
+    <option [ngValue]="25">25</option>
+  </select>
+
+  <span class="f-13">
+    Showing {{ count !== 0 ? lowerBound : 1 }} of {{ count }}
+  </span>
+
+  <button [disabled]="lowerBound === 1" (click)="prevPage()">Prev</button>
+  <button [disabled]="totalRecords >= count" (click)="nextPage()">Next</button>
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SpringBootPractiseServiceService } from '../spring-boot-practise-service.service';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -38,7 +39,7 @@ export class SpringBootPractiseComponent implements OnInit {
     lowerBound : this.lowerBound,
     upperBound : this.upperBound
     }
-  this.service.getCompanyDetailsList(data.lowerBound,data.upperBound).subscribe(res=>{
+  return this.service.getCompanyDetailsList(data.lowerBound,data.upperBound).subscribe(res=>{
   this.listOfComapanyDetails = res.companyFilter;
   this.count = res.count;
   console.log(this.count);
@@ -57,7 +58,7 @@ export class SpringBootPractiseComponent implements OnInit {
     companyProducts : this.companyProducts,
     workingHours : this.workingHours
     }
-    this.service.saveCompany(data).subscribe(res=>{
+   return this.service.saveCompany(data).subscribe(res=>{
       Swal.fire({
       title: "Do you want to save the Data?",
       showDenyButton: true,
@@ -87,7 +88,7 @@ export class SpringBootPractiseComponent implements OnInit {
     let data = {
     companyId : id
     }
-    this.service.deleteCompanyById(id).subscribe(res=>{
+   return this.service.deleteCompanyById(id).subscribe(res=>{
       Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -116,7 +117,7 @@ export class SpringBootPractiseComponent implements OnInit {
   let data ={
   companyId : id
   }
-  this.service.getCompanyById(id).subscribe(res=>{
+ return this.service.getCompanyById(id).subscribe(res=>{
   this.company = res;
   this.companyId = this.company.companyId;
   this.companyName = this.company.companyName;
@@ -138,7 +139,7 @@ export class SpringBootPractiseComponent implements OnInit {
     companyProducts : this.companyProducts,
     workingHours : this.workingHours 
     }
-    this.service.updateCompany(data).subscribe(res=>{
+   return this.service.updateCompany(data).subscribe(res=>{
       Swal.fire({
   title: "Do you want to update the Data?",
   showDenyButton: true,

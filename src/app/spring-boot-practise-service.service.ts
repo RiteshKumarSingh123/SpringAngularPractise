@@ -14,10 +14,9 @@ export class SpringBootPractiseServiceService {
   //   return this.http.get<any>(`http://192.168.10.186:8585/company/getCompanyDetailsList?` + company);
   // }
 
-  public getCompanyDetailsList(page: any,size:any): Observable<any> {
-  return this.http.get<any>(`http://192.168.10.186:8585/company/getCompanyDetailsList?company=&page=${page}&size=${size}`);
+  public getCompanyDetailsList(page: number,size:number): Observable<any> {
+    return this.http.get<any>(`http://192.168.10.186:8585/company/getCompanyDetailsList?page=${page}&size=${size}`);
   }
-
 
   public saveCompany(company:any):Observable<any> {
     return this.http.post<any>(`http://192.168.10.186:8585/company/saveCompany`,company);
@@ -35,6 +34,14 @@ export class SpringBootPractiseServiceService {
 
   public updateCompany(company:any):Observable<any> {
     return this.http.post<any>(`http://192.168.10.186:8585/company/updateCompany`,company);
+  }
+
+  public getWorkersList(page:number,size:number): Observable<any> {
+    return this.http.get<any>(`http://192.168.10.186:8585/company/getWorkersList?page=${page}&size=${size}`)
+  }
+
+  public getCustomersList(page:number,size:number): Observable<any> {
+    return this.http.get<any>(`http://192.168.10.186:8585/company/getCustomersList?page=${page}&size=${size}`);
   }
 
 }

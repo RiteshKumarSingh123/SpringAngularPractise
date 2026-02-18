@@ -18,3 +18,62 @@ select {
 .f-13 {
   font-size: 13px;
 }
+
+
+/* styles.css or component's CSS */
+
+.navbar {
+  background-color: #333;
+  padding: 10px 20px;
+}
+
+.navbar-nav {
+  list-style-type: none;
+  display: flex;
+}
+
+.nav-item {
+  margin-right: 20px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.company-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+.company-table th, .workers-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.company-table th {
+    background-color: #3e8e41;
+    color: white;
+}
+
+.company-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.company-table tr:hover {
+    background-color: #ddd;
+}
+
+.company-table caption {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}

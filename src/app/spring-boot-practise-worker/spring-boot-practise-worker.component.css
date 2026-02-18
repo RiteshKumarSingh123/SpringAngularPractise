@@ -1,0 +1,80 @@
+/* workers-table.component.css */
+
+.workers-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+.workers-table th, .workers-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.workers-table th {
+    background-color: #6a1b9a; /* Purple background */
+    color: white;
+}
+
+.workers-table tr:nth-child(even) {
+    background-color: #f3e5f5; /* Light purple for even rows */
+}
+
+.workers-table tr:hover {
+    background-color: #d1c4e9; /* Lighter purple on hover */
+}
+
+.workers-table caption {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #6a1b9a; /* Purple color for caption */
+}
+
+.pagination {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+select {
+  padding: 5px;
+}
+
+.f-13 {
+  font-size: 13px;
+}
+
+
+.navbar {
+  background-color: #6a1b9a; 
+  padding: 10px 20px;
+}
+
+.navbar-nav {
+  list-style-type: none;
+  display: flex;
+}
+
+.nav-item {
+  margin-right: 20px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
