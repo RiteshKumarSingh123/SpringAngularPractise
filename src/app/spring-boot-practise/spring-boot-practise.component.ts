@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SpringBootPractiseServiceService } from '../spring-boot-practise-service.service';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -28,7 +28,8 @@ export class SpringBootPractiseComponent implements OnInit {
   public flag!: boolean;
   
 
-  constructor(private service:SpringBootPractiseServiceService) { }
+  constructor(private service:SpringBootPractiseServiceService,
+    private router:Router) { }
 
   ngOnInit(): void {
    this.listOfCompanyDetails();
@@ -185,6 +186,14 @@ export class SpringBootPractiseComponent implements OnInit {
      this.totalRecords = 5;
     }
     this.listOfCompanyDetails();
+  }
+
+  public getCustomerHead(){
+  this.router.navigate(['customer'],{queryParams:{customerHead:'Head -> Subasis Dey'}});
+  }
+
+  public getWorkerHead(){
+  this.router.navigate(['worker'],{queryParams:{workerHead:'Head -> Rajni Das'}});
   }
 
   

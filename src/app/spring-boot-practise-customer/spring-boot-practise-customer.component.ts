@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SpringBootPractiseServiceService } from '../spring-boot-practise-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-spring-boot-practise-customer',
@@ -14,10 +16,18 @@ export class SpringBootPractiseCustomerComponent implements OnInit {
   public customerList : any [] = [];
   public perPage: number = 5;
   public totalRecords: number = 5;
+  public name:String | null = null;
+  public customerHead:String | null = null;
 
-  constructor(private service:SpringBootPractiseServiceService) { }
+  constructor(private service:SpringBootPractiseServiceService,
+              private route:ActivatedRoute,
+              private router:Router) { }
 
   ngOnInit(): void {
+    this.name = this.route.snapshot.paramMap.get('name');
+    this.route.queryParams.subscribe(res=>{
+      this.customerHead = res['customerHead'];
+    })
     this.getCustomerList();
   }
 
@@ -53,6 +63,10 @@ export class SpringBootPractiseCustomerComponent implements OnInit {
      this.totalRecords = 5;
     }
     this.getCustomerList();
+  }
+
+  public getCompany(){
+    this.router.navigate(['/company']);
   }
 
 }
