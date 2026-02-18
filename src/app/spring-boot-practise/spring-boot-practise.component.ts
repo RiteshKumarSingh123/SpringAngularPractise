@@ -48,7 +48,7 @@ export class SpringBootPractiseComponent implements OnInit {
   })
   }
 
-  submitCompanyData(){
+ public submitCompanyData(){
     let data ={
     companyName : this.companyName,
     companyAddress : this.companyAddress,
@@ -83,7 +83,7 @@ export class SpringBootPractiseComponent implements OnInit {
     })
   }
 
-  deleteCompanyData(id:number){
+ public deleteCompanyData(id:number){
     let data = {
     companyId : id
     }
@@ -112,7 +112,7 @@ export class SpringBootPractiseComponent implements OnInit {
 
   }
 
-  getCompanyDataById(id:number){
+ public getCompanyDataById(id:number){
   let data ={
   companyId : id
   }
@@ -128,7 +128,7 @@ export class SpringBootPractiseComponent implements OnInit {
   })
   }
 
-  updateCompanyData(){
+ public updateCompanyData(){
     let data ={
     companyId : this.companyId,
     companyName : this.companyName,
