@@ -79,3 +79,47 @@ select {
   text-decoration: underline;
 }
 
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+div {
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
+
+button.delete-btn {
+  background-color: rgb(159, 18, 241); /* Red color for delete button */
+}
+
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Adds space between the two forms */
+}
+
+.col {
+  color: purple;
+}
+

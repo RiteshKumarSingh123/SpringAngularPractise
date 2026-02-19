@@ -79,3 +79,55 @@ select {
 }
 
 
+form {
+    background-color: #d4f7d6; /* Light green background */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    width: 350px;
+    margin: 50px auto; /* Center the form horizontally with some margin */
+    border: 2px solid #66bb6a; /* Light green border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for a box effect */
+  }
+
+  /* Styling the form labels */
+  label {
+    font-size: 14px;
+    color: #2e7d32; /* Dark green color for labels */
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  /* Styling the form input fields */
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #c8e6c9; /* Light green border for inputs */
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #ffffff; /* White background for input fields */
+  }
+
+  /* Styling the submit buttons */
+  button {
+    background-color: #66bb6a; /* Light green background for buttons */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 40%;
+    margin-top: 10px; /* Some space between the buttons */
+  }
+
+  /* Button hover effect */
+  button:hover {
+    background-color: #388e3c; /* Darker green on hover */
+  }
+
+  /* Button active effect */
+  button:active {
+    background-color: #2e7d32; /* Even darker green when clicked */
+  }

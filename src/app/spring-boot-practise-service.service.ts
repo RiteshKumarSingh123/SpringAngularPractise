@@ -37,7 +37,25 @@ export class SpringBootPractiseServiceService {
   }
 
   public getWorkersList(page:number,size:number): Observable<any> {
-    return this.http.get<any>(`http://192.168.10.186:8585/company/getWorkersList?page=${page}&size=${size}`)
+    return this.http.get<any>(`http://192.168.10.186:8585/company/getWorkersList?page=${page}&size=${size}`);
+  }
+
+  public saveWorkers(worker:any) : Observable<any> {
+    return this.http.post<any>(`http://192.168.10.186:8585/company/saveWorkers`,worker);
+  }
+
+  public getWorkersById(workerId:number){
+    const params = new HttpParams().set('workerId', workerId.toString());
+    return this.http.get<any>(`http://192.168.10.186:8585/company/getWorkersById?`,{params});
+  }
+
+  public deleteWorkerById(workerId:number){
+    const params = new HttpParams().set('workerId', workerId.toString());
+    return this.http.get<any>(`http://192.168.10.186:8585/company/deleteWorkerById?`,{params});
+  }
+
+  public updateWorkers(worker:any) : Observable<any> {
+    return this.http.post<any>(`http://192.168.10.186:8585/company/updateWorkers`,worker);
   }
 
   public getCustomersList(page:number,size:number): Observable<any> {

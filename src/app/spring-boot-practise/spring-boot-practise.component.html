@@ -83,6 +83,7 @@
     </tr>
   </tbody>
 </table>
+<p *ngIf="listOfComapanyDetails.length==0">no records found</p>
 
 <div class="pagination">
   <select (change)="perPageChange()" [(ngModel)]="perPage">

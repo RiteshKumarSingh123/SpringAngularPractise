@@ -27,7 +27,11 @@
     </thead>
     <tbody>
         <tr *ngFor="let value of workersList">
-            <td>{{ value.workerId }}</td>
+            <td>
+            <button (click)="getWorkersById(value.workerId)">edit</button>
+            {{ value.workerId }}
+            <button class="delete-btn" (click)="deleteWorkerById(value.workerId)">delete</button>
+            </td>
             <td>{{ value.workerName }}</td>
             <td>{{ value.address }}</td>
             <td>{{ value.underWhichCompany }}</td>
@@ -55,3 +59,97 @@
   <button (click)="getCompany()">Close</button>
 </div>
 
+<div class="form-container">
+<div class="container">
+  <h3 class="col">Worker Data Save</h3>
+  <form [formGroup]="workerForm" (ngSubmit)="onSubmit()" >
+    <div>
+      <label for="workerName">Worker Name:</label>
+      <input id="workerName" formControlName="workerName" type="text" />
+      <div *ngIf="workerForm.get('workerName')?.invalid && workerForm.get('workerName')?.touched">
+        <small *ngIf="workerForm.get('workerName')?.hasError('required')">Worker name is required.</small>
+        <small *ngIf="workerForm.get('workerName')?.hasError('minlength')">Minimum 5 characters required.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="address">Address:</label>
+      <input id="address" formControlName="address" type="text" />
+      <div *ngIf="workerForm.get('address')?.invalid && workerForm.get('address')?.touched">
+        <small *ngIf="workerForm.get('address')?.hasError('required')">Address is required.</small>
+        <small *ngIf="workerForm.get('address')?.hasError('minlength')">Minimum 5 characters required.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="underWhichCompany">Under Which Company:</label>
+      <input id="underWhichCompany" formControlName="underWhichCompany" type="text" />
+      <div *ngIf="workerForm.get('underWhichCompany')?.invalid && workerForm.get('underWhichCompany')?.touched">
+        <small *ngIf="workerForm.get('underWhichCompany')?.hasError('required')">Company name is required.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="workerPosition">Worker Position:</label>
+      <input id="workerPosition" formControlName="workerPosition" type="text" />
+      <div *ngIf="workerForm.get('workerPosition')?.invalid && workerForm.get('workerPosition')?.touched">
+        <small *ngIf="workerForm.get('workerPosition')?.hasError('required')">Position is required.</small>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="workerForm.invalid">Create</button>
+  </form>
+</div>
+
+
+
+<div class="container">
+  <h3 class="col">Worker Data Update</h3>
+  <form [formGroup]="updateWorkerForm" (ngSubmit)="onUpdate()">
+    <div>
+      <label for="workerName">Worker Name:</label>
+      <input id="workerName" formControlName="workerName" type="text" />
+      <div *ngIf="updateWorkerForm.get('workerName')?.invalid && updateWorkerForm.get('workerName')?.touched">
+        <small *ngIf="updateWorkerForm.get('workerName')?.hasError('required')">Worker name is required.</small>
+        <small *ngIf="updateWorkerForm.get('workerName')?.hasError('minlength')">Minimum 5 characters required.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="address">Address:</label>
+      <input id="address" formControlName="address" type="text" />
+      <div *ngIf="updateWorkerForm.get('address')?.invalid && updateWorkerForm.get('address')?.touched">
+        <small *ngIf="updateWorkerForm.get('address')?.hasError('required')">Address is required.</small>
+        <small *ngIf="updateWorkerForm.get('address')?.hasError('minlength')">Minimum 5 characters required.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="underWhichCompany">Under Which Company:</label>
+      <input id="underWhichCompany" formControlName="underWhichCompany" type="text" />
+      <div *ngIf="updateWorkerForm.get('underWhichCompany')?.invalid && updateWorkerForm.get('underWhichCompany')?.touched">
+        <small *ngIf="updateWorkerForm.get('underWhichCompany')?.hasError('required')">Company name is required.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="workerPosition">Worker Position:</label>
+      <input id="workerPosition" formControlName="workerPosition" type="text" />
+      <div *ngIf="updateWorkerForm.get('workerPosition')?.invalid && updateWorkerForm.get('workerPosition')?.touched">
+        <small *ngIf="updateWorkerForm.get('workerPosition')?.hasError('required')">Position is required.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="date">Date:</label>
+      <input id="date" formControlName="date" type="text" />
+      <div *ngIf="updateWorkerForm.get('date')?.invalid && updateWorkerForm.get('date')?.touched">
+        <small *ngIf="updateWorkerForm.get('date')?.hasError('required')">Position is required.</small>
+        <small *ngIf="updateWorkerForm.get('date')?.hasError('pattern')">Please enter a valid date-time in the format: YYYY-MM-DDTHH:mm:ss.sss</small>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="updateWorkerForm.invalid">Update</button>
+  </form>
+</div>
+</div>
