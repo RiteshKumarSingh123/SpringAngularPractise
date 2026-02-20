@@ -51,6 +51,60 @@ export class SpringBootPractiseComponent implements OnInit {
   }
 
  public submitCompanyData(){
+   if (!this.companyName) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Validation Error',
+      text: 'companyName cannot be empty',
+      showConfirmButton: true,
+    });
+    return; 
+  }
+  if (!this.companyAddress) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Validation Error',
+      text: 'companyAddress cannot be empty',
+      showConfirmButton: true,
+    });
+    return; 
+  }
+  if (!this.companyTotalMembers) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Validation Error',
+      text: 'companyTotalMembers cannot be empty',
+      showConfirmButton: true,
+    });
+    return; 
+  }
+  if (!this.ownerName) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Validation Error',
+      text: 'ownerName cannot be empty',
+      showConfirmButton: true,
+    });
+    return; 
+  }
+  if (!this.companyProducts) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Validation Error',
+      text: 'companyProducts cannot be empty',
+      showConfirmButton: true,
+    });
+    return; 
+  }
+  if (!this.workingHours) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Validation Error',
+      text: 'workingHours cannot be empty',
+      showConfirmButton: true,
+    });
+    return; 
+  }
     let data ={
     companyName : this.companyName,
     companyAddress : this.companyAddress,
@@ -121,6 +175,60 @@ export class SpringBootPractiseComponent implements OnInit {
   }
 
  public updateCompanyData(){
+  if (!this.companyName) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Validation Error',
+      text: 'companyName cannot be empty',
+      showConfirmButton: true,
+    });
+    return; 
+  }
+  if (!this.companyAddress) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Validation Error',
+      text: 'companyAddress cannot be empty',
+      showConfirmButton: true,
+    });
+    return; 
+  }
+  if (!this.companyTotalMembers) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Validation Error',
+      text: 'companyTotalMembers cannot be empty',
+      showConfirmButton: true,
+    });
+    return; 
+  }
+  if (!this.ownerName) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Validation Error',
+      text: 'ownerName cannot be empty',
+      showConfirmButton: true,
+    });
+    return; 
+  }
+  if (!this.companyProducts) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Validation Error',
+      text: 'companyProducts cannot be empty',
+      showConfirmButton: true,
+    });
+    return; 
+  }
+  if (!this.workingHours) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Validation Error',
+      text: 'workingHours cannot be empty',
+      showConfirmButton: true,
+    });
+    return; 
+  }
     let data ={
     companyId : this.companyId,
     companyName : this.companyName,
