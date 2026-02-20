@@ -66,4 +66,18 @@ export class SpringBootPractiseServiceService {
     return this.http.post<any>(`http://192.168.10.186:8585/company/saveCustomers`,customer);
   }
 
+  public getCustomerById(customerId:number) : Observable<any> {
+    const params = new HttpParams().set('customerId', customerId.toString());
+    return this.http.get<any>(`http://192.168.10.186:8585/company/getCustomerById?`,{params});
+  }
+
+  public deleteCustomerById(customerId:number) : Observable<any> {
+    const params = new HttpParams().set('customerId', customerId.toString());
+    return this.http.get<any>(`http://192.168.10.186:8585/company/deleteCustomerById?`,{params});
+  }
+
+  public updateCustomers(customer:any) : Observable<any> {
+    return this.http.post<any>(`http://192.168.10.186:8585/company/updateCustomers`,customer);
+  }
+
 }

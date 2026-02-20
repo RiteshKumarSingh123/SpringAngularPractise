@@ -113,7 +113,7 @@ export class SpringBootPractiseWorkerComponent implements OnInit {
     workerId : id
     }
     return this.service.getWorkersById(id).subscribe(res=>{
-    this.updateWorkerForm.patchValue({
+    this.updateWorkerForm.setValue({
        workerId : res.workerId,
        workerName : res.workerName,
        address : res.address,

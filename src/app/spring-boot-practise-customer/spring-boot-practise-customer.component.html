@@ -28,7 +28,9 @@
     </thead>
     <tbody>
         <tr *ngFor="let value of customerList">
-            <td>{{ value.customerId }}</td>
+            <td><button (click)="editCustomerById(value.customerId)">edit</button>
+              {{ value.customerId }}
+            <button (click)="getDeleteCustomerById(value.customerId)">delete</button></td>
             <td>{{ value.customerName }}</td>
             <td>{{ value.customerAdress }}</td>
             <td>{{ value.customerAge }}</td>
@@ -110,7 +112,7 @@
     </div>
 
     <button type="submit" [disabled]="customerForm.invalid" class="submit-btn">
-      Submit
+      {{ isEditMode ? 'Update' : 'Save' }}
     </button>
   </form>
 </div>

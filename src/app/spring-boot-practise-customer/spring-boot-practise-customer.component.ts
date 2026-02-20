@@ -22,6 +22,8 @@ export class SpringBootPractiseCustomerComponent implements OnInit {
   public customerName!: String;
   public customerAdress!: String;
   public customerAge!: String;
+  public customerId!: number;
+  public isEditMode: boolean = false;
 
 
   constructor(private service:SpringBootPractiseServiceService,
@@ -49,12 +51,21 @@ export class SpringBootPractiseCustomerComponent implements OnInit {
   }
 
   customerForm = new FormGroup({
+     customerId : new FormControl('',),
      customerName : new FormControl('', [ Validators.required,Validators.minLength(5), ]),
      customerAdress    : new FormControl('', [ Validators.required,Validators.minLength(5), ]),
      customerAge : new FormControl('', [ Validators.required,Validators.min(18),Validators.max(100), ])
-     })
+     });
 
-   public onSubmit(){
+   onSubmit() {
+    if (this.isEditMode) {
+      this.updatedCustomerSubmit();
+    } else {
+      this.saveCustomerSubmit();
+    }
+  }  
+
+   public saveCustomerSubmit(){
    let data = this.customerForm.value;
    return this.service.saveCustomers(data).subscribe(res=>{
     Swal.fire({
@@ -72,8 +83,60 @@ export class SpringBootPractiseCustomerComponent implements OnInit {
    this.getCustomerList();
    })
    }
-  
 
+   public updatedCustomerSubmit(){
+   let data = this.customerForm.value;
+   return this.service.updateCustomers(data).subscribe(res=>{
+     Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Data Updated Successfully',
+                showConfirmButton: false,
+                timer: 2000,
+                customClass: {
+                  popup: 'small-swal'
+                }
+              }); 
+    this.getCustomerList();
+    this.customerForm.reset();
+    console.log(res.status);
+    })
+   }
+  
+  public editCustomerById(id:number){
+    let data ={
+    customerId : id
+    }
+  return this.service.getCustomerById(id).subscribe(res=>{
+    this.customerForm.setValue({
+      customerId : res.customerId,
+      customerName : res.customerName,
+      customerAdress : res.customerAdress,
+      customerAge : res.customerAge
+    });
+    this.isEditMode = true;
+    })
+  }
+
+  public getDeleteCustomerById(id:number){
+    let data ={
+     customerId:id
+    }
+  return this.service.deleteCustomerById(id).subscribe(res=>{
+  Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Data Deleted Successfully',
+                showConfirmButton: false,
+                timer: 2000,
+                customClass: {
+                  popup: 'small-swal'
+                }
+              });
+  this.getCustomerList();
+  console.log(res.status);
+    })
+  }
 
   public perPageChange() {
     this.lowerBound = 1;
