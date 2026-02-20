@@ -61,18 +61,15 @@ export class SpringBootPractiseComponent implements OnInit {
     }
    return this.service.saveCompany(data).subscribe(res=>{
       Swal.fire({
-      title: "Do you want to save the Data?",
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: "Save",
-      denyButtonText: "Don't save"
-      }).then((result) => {
-      if (result.isConfirmed) {
-      Swal.fire("Saved!", "", "success");
-      } else if (result.isDenied) {
-      Swal.fire("Changes are not saved", "", "info");
-      }
-      });
+                  icon: 'success',
+                  title: 'Success',
+                  text: 'Data Saved Successfully',
+                  showConfirmButton: false,
+                  timer: 2000,
+                  customClass: {
+                    popup: 'small-swal'
+                  }
+                });
 
     console.log('saved sucessfully');
     this.listOfCompanyDetails();
@@ -91,22 +88,15 @@ export class SpringBootPractiseComponent implements OnInit {
     }
    return this.service.deleteCompanyById(id).subscribe(res=>{
       Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
-    }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire({
-      title: "Deleted!",
-      text: "Your file has been deleted.",
-      icon: "success"
-      });
-     }
-     });
+                  icon: 'success',
+                  title: 'Success',
+                  text: 'Data Deleted Successfully',
+                  showConfirmButton: false,
+                  timer: 2000,
+                  customClass: {
+                    popup: 'small-swal'
+                  }
+                });
     this.status = res.status;
     console.log(this.status);
     this.listOfCompanyDetails();
@@ -141,19 +131,16 @@ export class SpringBootPractiseComponent implements OnInit {
     workingHours : this.workingHours 
     }
    return this.service.updateCompany(data).subscribe(res=>{
-      Swal.fire({
-  title: "Do you want to update the Data?",
-  showDenyButton: true,
-  showCancelButton: true,
-  confirmButtonText: "Update",
-  denyButtonText: `Don't Update`
-  }).then((result) => {
-  if (result.isConfirmed) {
-    Swal.fire("Updated!", "", "success");
-  } else if (result.isDenied) {
-    Swal.fire("Changes are not Updated", "", "info");
-  }
-  });
+     Swal.fire({
+                 icon: 'success',
+                 title: 'Success',
+                 text: 'Data Updated Successfully',
+                 showConfirmButton: false,
+                 timer: 2000,
+                 customClass: {
+                   popup: 'small-swal'
+                 }
+               });
     this.status = res.status;
     console.log(this.status);
     this.listOfCompanyDetails();

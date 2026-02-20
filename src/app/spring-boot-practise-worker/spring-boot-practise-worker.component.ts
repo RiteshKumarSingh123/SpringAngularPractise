@@ -63,17 +63,14 @@ export class SpringBootPractiseWorkerComponent implements OnInit {
     let data = this.workerForm.value;
     return this.service.saveWorkers(data).subscribe(res=>{
      Swal.fire({
-          title: "Do you want to save the Data?",
-          showDenyButton: true,
-          showCancelButton: true,
-          confirmButtonText: "Save",
-          denyButtonText: "Don't save"
-          }).then((result) => {
-          if (result.isConfirmed) {
-          Swal.fire("Saved!", "", "success");
-          } else if (result.isDenied) {
-          Swal.fire("Changes are not saved", "", "info");
-          }
+            icon: 'success',
+            title: 'Success',
+            text: 'Data Saved Successfully',
+            showConfirmButton: false,
+            timer: 2000,
+            customClass: {
+              popup: 'small-swal'
+            }
           });
     console.log('saved sucessfully');
     this.getWorkersList();
@@ -81,36 +78,35 @@ export class SpringBootPractiseWorkerComponent implements OnInit {
     })
   }
 
+
    updateWorkerForm = new FormGroup({
    workerId : new FormControl('',) ,
    workerName : new FormControl('', [ Validators.required,Validators.minLength(5), ]),
    address    : new FormControl('', [ Validators.required,Validators.minLength(5), ]),
    underWhichCompany : new FormControl('', [ Validators.required]),
    workerPosition : new FormControl('', [ Validators.required]),
-   date: new FormControl('', [ Validators.required])
+   date: new FormControl('', [ Validators.required,Validators.pattern(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(\.\d{6})?$/)])
    })
 
   public onUpdate(){
    let data = this.updateWorkerForm.value;
    return this.service.updateWorkers(data).subscribe(res=>{
      Swal.fire({
-      title: "Do you want to update the Data?",
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: "Update",
-      denyButtonText: `Don't Update`
-      }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire("Updated!", "", "success");
-      } else if (result.isDenied) {
-        Swal.fire("Changes are not Updated", "", "info");
-      }
-      });
+            icon: 'success',
+            title: 'Success',
+            text: 'Data Updated Successfully',
+            showConfirmButton: false,
+            timer: 2000,
+            customClass: {
+              popup: 'small-swal'
+            }
+          });
    console.log(res.status);
    this.getWorkersList();
    this.updateWorkerForm.reset();
    })
    }
+
 
   public getWorkersById(id:number){
     let data = {
@@ -132,29 +128,22 @@ export class SpringBootPractiseWorkerComponent implements OnInit {
     let data ={
     workerId : id  
     }
-    return this.service.deleteWorkerById(id).subscribe(res=>{
-     Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-        if (result.isConfirmed) {
+   return this.service.deleteWorkerById(id).subscribe(res=>{
           Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success"
+            icon: 'success',
+            title: 'Success',
+            text: 'Data Deleted Successfully',
+            showConfirmButton: false,
+            timer: 2000,
+            customClass: {
+              popup: 'small-swal'
+            }
           });
-         }
-         });  
     console.log(res.status);
     this.getWorkersList();
-    })
-
+    }); 
   }
+
 
   public perPageChange() {
     this.lowerBound = 1;

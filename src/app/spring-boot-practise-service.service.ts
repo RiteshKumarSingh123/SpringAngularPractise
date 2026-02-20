@@ -62,4 +62,8 @@ export class SpringBootPractiseServiceService {
     return this.http.get<any>(`http://192.168.10.186:8585/company/getCustomersList?page=${page}&size=${size}`);
   }
 
+  public saveCustomers(customer:any) : Observable<any> {
+    return this.http.post<any>(`http://192.168.10.186:8585/company/saveCustomers`,customer);
+  }
+
 }

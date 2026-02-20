@@ -79,3 +79,78 @@ select {
   text-decoration: underline;
 }
 
+/* for form save */
+
+/* Container Styling */
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Container */
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label Styling */
+.label {
+  font-size: 1.1rem;
+  color: #4e3629; /* Brown color */
+  margin-bottom: 5px; /* Slight gap between label and input */
+  display: block; /* Ensures the label takes up full width and stays above the input */
+}
+
+/* Input Fields Styling */
+.input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #d1bfa7; /* Light brown border */
+  border-radius: 4px;
+  margin-bottom: 15px; /* Space between input fields */
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Focused Input Styling */
+.input:focus {
+  border-color: #8b5d33; /* Darker brown color on focus */
+}
+
+/* Submit Button Styling */
+.submit-btn {
+  padding: 10px 20px;
+  background-color: #8b5d33; /* Dark brown */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button Hover Effect */
+.submit-btn:hover {
+  background-color: #7a4d27;
+}
+
+/* Error Message Styling */
+.error-message {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.error-message small {
+  display: block;
+}
+
+/* Disable Submit Button Styling */
+.submit-btn:disabled {
+  background-color: #d1bfa7;
+  cursor: not-allowed;
+}

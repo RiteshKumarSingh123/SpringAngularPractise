@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SpringBootPractiseServiceService } from '../spring-boot-practise-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-spring-boot-practise-customer',
@@ -18,6 +19,10 @@ export class SpringBootPractiseCustomerComponent implements OnInit {
   public totalRecords: number = 5;
   public name:String | null = null;
   public customerHead:String | null = null;
+  public customerName!: String;
+  public customerAdress!: String;
+  public customerAge!: String;
+
 
   constructor(private service:SpringBootPractiseServiceService,
               private route:ActivatedRoute,
@@ -42,6 +47,32 @@ export class SpringBootPractiseCustomerComponent implements OnInit {
     console.log(this.count);
     })
   }
+
+  customerForm = new FormGroup({
+     customerName : new FormControl('', [ Validators.required,Validators.minLength(5), ]),
+     customerAdress    : new FormControl('', [ Validators.required,Validators.minLength(5), ]),
+     customerAge : new FormControl('', [ Validators.required,Validators.min(18),Validators.max(100), ])
+     })
+
+   public onSubmit(){
+   let data = this.customerForm.value;
+   return this.service.saveCustomers(data).subscribe(res=>{
+    Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Data Saved Successfully',
+                showConfirmButton: false,
+                timer: 2000,
+                customClass: {
+                  popup: 'small-swal'
+                }
+              });
+   console.log("data saved sucessfully");
+   this.customerForm.reset();
+   this.getCustomerList();
+   })
+   }
+  
 
 
   public perPageChange() {

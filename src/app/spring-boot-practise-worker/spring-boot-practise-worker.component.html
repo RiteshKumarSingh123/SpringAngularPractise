@@ -144,8 +144,8 @@
       <label for="date">Date:</label>
       <input id="date" formControlName="date" type="text" />
       <div *ngIf="updateWorkerForm.get('date')?.invalid && updateWorkerForm.get('date')?.touched">
-        <small *ngIf="updateWorkerForm.get('date')?.hasError('required')">Position is required.</small>
-        <small *ngIf="updateWorkerForm.get('date')?.hasError('pattern')">Please enter a valid date-time in the format: YYYY-MM-DDTHH:mm:ss.sss</small>
+        <small *ngIf="updateWorkerForm.get('date')?.hasError('required')">Date is required.</small>
+        <small *ngIf="updateWorkerForm.get('date')?.hasError('pattern')">Please enter a valid date-time in the format: YYYY-MM-DDTHH:mm:ss.sssss</small>
       </div>
     </div>
 
