@@ -10,22 +10,23 @@ import Swal from 'sweetalert2';
 })
 export class SpringBootPractiseComponent implements OnInit {
 
-  public listOfComapanyDetails: any []=[];
-  public company : any = {};
-  public count : any;
-  public perPage: number = 5;
-  public companyId!: number;
-  public totalRecords : number = 5;
-  public lowerBound: number = 1;
-  public upperBound: number = 5;
-  public companyName!: String | null;
-  public companyAddress!: String | null;
-  public companyTotalMembers!: String | null;
-  public ownerName!: String | null;
-  public companyProducts!: String | null;
-  public workingHours!: String | null;
-  public status!: String | null;
-  public flag!: boolean;
+   listOfComapanyDetails: any []=[];
+   company : any = {};
+   count : any;
+   perPage: number = 5;
+   companyId!: number;
+   totalRecords : number = 5;
+   lowerBound: number = 1;
+   upperBound: number = 5;
+   companyName!: string | null;
+   companyAddress!: string | null;
+   companyTotalMembers!: string | null;
+   ownerName!: string | null;
+   companyProducts!: string | null;
+   workingHours!: string | null;
+   status!: string | null;
+   flag!: boolean;
+
   
 
   constructor(private service:SpringBootPractiseServiceService,

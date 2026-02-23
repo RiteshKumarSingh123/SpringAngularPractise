@@ -12,19 +12,19 @@ import Swal from 'sweetalert2';
 })
 export class SpringBootPractiseWorkerComponent implements OnInit {
 
-  public lowerBound: number = 1;
-  public upperBound: number = 5;
-  public perPage: number = 5;
-  public totalRecords: number = 5;
-  public workersList : any [] = [];
-  public count!: number;
-  public workerId!: number;
-  public name: string | null = null;
-  public workerHead : String | null = null;
-  public workerName!: String;
-  public address!: String;
-  public underWhichCompany!: String;
-  public workerPosition!: String;
+ lowerBound: number = 1;
+ upperBound: number = 5;
+ perPage: number = 5;
+ totalRecords: number = 5;
+ workersList : any [] = [];
+ count!: number;
+ workerId!: number;
+ name: string | null = null;
+ workerHead : string | null = null;
+ workerName!: string;
+ address!: string;
+ underWhichCompany!: string;
+ workerPosition!: string;
   
 
   constructor(private service:SpringBootPractiseServiceService,

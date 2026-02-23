@@ -29,7 +29,7 @@
         <tr *ngFor="let value of workersList">
             <td>
             <button (click)="getWorkersById(value.workerId)">edit</button>
-            {{ value.workerId }}
+            <!-- {{ value.workerId }} -->
             <button class="delete-btn" (click)="deleteWorkerById(value.workerId)">delete</button>
             </td>
             <td>{{ value.workerName }}</td>

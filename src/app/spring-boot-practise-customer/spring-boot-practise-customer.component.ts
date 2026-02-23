@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SpringBootPractiseServiceService } from '../spring-boot-practise-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -11,19 +11,20 @@ import Swal from 'sweetalert2';
 })
 export class SpringBootPractiseCustomerComponent implements OnInit {
 
-  public lowerBound: number = 1;
-  public upperBound: number = 5;
-  public count!: number;
-  public customerList : any [] = [];
-  public perPage: number = 5;
-  public totalRecords: number = 5;
-  public name:String | null = null;
-  public customerHead:String | null = null;
-  public customerName!: String;
-  public customerAdress!: String;
-  public customerAge!: String;
-  public customerId!: number;
-  public isEditMode: boolean = false;
+
+ lowerBound: number = 1;
+ upperBound: number = 5;
+ count!: number;
+ customerList : any [] = [];
+ perPage: number = 5;
+ totalRecords: number = 5;
+ name:string | null = null;
+ customerHead:string | null = null;
+ customerName!: string;
+ customerAdress!: string;
+ customerAge!: string;
+ customerId!: number;
+ isEditMode: boolean = false;
 
 
   constructor(private service:SpringBootPractiseServiceService,
