@@ -12,8 +12,8 @@ import Swal from 'sweetalert2';
 })
 export class SpringBootPractiseWorkerComponent implements OnInit {
 
- lowerBound: number = 1;
- upperBound: number = 5;
+ page: number = 1;
+ size: number = 5;
  perPage: number = 5;
  totalRecords: number = 5;
  workersList : any [] = [];
@@ -41,10 +41,10 @@ export class SpringBootPractiseWorkerComponent implements OnInit {
 
   public getWorkersList(){
     let data ={
-     lowerBound : this.lowerBound,
-     upperBound : this.upperBound
+     page : this.page,
+     size : this.size
     }
-    return this.service.getWorkersList(data.lowerBound,data.upperBound).subscribe(res=>{
+    return this.service.getWorkersList(data.page,data.size).subscribe(res=>{
     this.workersList = res.workersFilter;
     this.count = res.count;
     console.log(this.count);
@@ -146,21 +146,21 @@ export class SpringBootPractiseWorkerComponent implements OnInit {
 
 
   public perPageChange() {
-    this.lowerBound = 1;
-    this.upperBound = this.perPage;
+    this.page = 1;
+    this.size = this.perPage;
     this.getWorkersList();
   }
 
   public nextPage() {
-    this.lowerBound = this.lowerBound+1; 
+    this.page = this.page+1; 
     this.totalRecords = this.totalRecords + this.perPage;
     console.log(this.totalRecords+'this.totalRecords')
     this.getWorkersList();
   }
 
   public prevPage() {
-    this.lowerBound = this.lowerBound-1; 
-    if(this.lowerBound==1){
+    this.page = this.page-1; 
+    if(this.page==1){
      this.totalRecords = 5;
     }
     this.getWorkersList();

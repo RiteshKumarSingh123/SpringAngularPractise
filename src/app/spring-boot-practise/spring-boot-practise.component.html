@@ -83,7 +83,7 @@
     </tr>
   </tbody>
 </table>
-<p *ngIf="listOfComapanyDetails.length==0">no records found</p>
+<p *ngIf="listOfComapanyDetails.length==0" class="colorrdd">no records found</p>
 
 <div class="pagination">
   <select (change)="perPageChange()" [(ngModel)]="perPage">
@@ -95,10 +95,10 @@
   </select>
 
   <span class="f-13">
-    Showing {{ count !== 0 ? lowerBound : 1 }} of {{ count }}
+    Showing {{ count !== 0 ? page : 1 }} of {{ count }}
   </span>
 
-  <button [disabled]="lowerBound === 1" (click)="prevPage()">Prev</button>
+  <button [disabled]="page === 1" (click)="prevPage()">Prev</button>
   <button [disabled]="totalRecords >= count" (click)="nextPage()">Next</button>
 </div>
 

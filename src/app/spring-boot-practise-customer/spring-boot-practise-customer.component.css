@@ -154,3 +154,7 @@ select {
   background-color: #d1bfa7;
   cursor: not-allowed;
 }
+
+.colorrdd{
+  color: red;
+}

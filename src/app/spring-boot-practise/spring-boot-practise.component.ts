@@ -10,14 +10,15 @@ import Swal from 'sweetalert2';
 })
 export class SpringBootPractiseComponent implements OnInit {
 
+
    listOfComapanyDetails: any []=[];
    company : any = {};
    count : any;
    perPage: number = 5;
    companyId!: number;
    totalRecords : number = 5;
-   lowerBound: number = 1;
-   upperBound: number = 5;
+   page: number = 1;
+   size: number = 5;
    companyName!: string | null;
    companyAddress!: string | null;
    companyTotalMembers!: string | null;
@@ -38,15 +39,15 @@ export class SpringBootPractiseComponent implements OnInit {
 
   public listOfCompanyDetails(){
     let data ={
-    lowerBound : this.lowerBound,
-    upperBound : this.upperBound
+    page : this.page,
+    size : this.size
     }
-  return this.service.getCompanyDetailsList(data.lowerBound,data.upperBound).subscribe(res=>{
+  return this.service.getCompanyDetailsList(data.page,data.size).subscribe(res=>{
   this.listOfComapanyDetails = res.companyFilter;
   this.count = res.count;
   console.log(this.count);
-  console.log(this.lowerBound);
-  console.log(this.upperBound);
+  console.log(this.page);
+  console.log(this.size);
   console.log(this.perPage+'perPage');
   })
   }
@@ -264,21 +265,21 @@ export class SpringBootPractiseComponent implements OnInit {
   }
 
   public perPageChange() {
-    this.lowerBound = 1;
-    this.upperBound = this.perPage;
+    this.page = 1;
+    this.size = this.perPage;
     this.listOfCompanyDetails();
   }
 
   public nextPage() {
-    this.lowerBound = this.lowerBound+1; 
+    this.page = this.page+1; 
     this.totalRecords = this.totalRecords + this.perPage;
     console.log(this.totalRecords+'this.totalRecords')
     this.listOfCompanyDetails();
   }
 
   public prevPage() {
-    this.lowerBound = this.lowerBound-1; 
-    if(this.lowerBound==1){
+    this.page = this.page-1; 
+    if(this.page==1){
      this.totalRecords = 5;
     }
     this.listOfCompanyDetails();

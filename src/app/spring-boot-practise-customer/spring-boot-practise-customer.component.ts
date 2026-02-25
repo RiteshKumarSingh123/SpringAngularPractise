@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SpringBootPractiseServiceService } from '../spring-boot-practise-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -12,8 +12,8 @@ import Swal from 'sweetalert2';
 export class SpringBootPractiseCustomerComponent implements OnInit {
 
 
- lowerBound: number = 1;
- upperBound: number = 5;
+ page: number = 1;
+ size: number = 5;
  count!: number;
  customerList : any [] = [];
  perPage: number = 5;
@@ -25,7 +25,7 @@ export class SpringBootPractiseCustomerComponent implements OnInit {
  customerAge!: string;
  customerId!: number;
  isEditMode: boolean = false;
-
+ childData : number = 0;
 
   constructor(private service:SpringBootPractiseServiceService,
               private route:ActivatedRoute,
@@ -41,10 +41,10 @@ export class SpringBootPractiseCustomerComponent implements OnInit {
 
   public getCustomerList(){
     let data={
-    lowerBound: this.lowerBound,
-    upperBound: this.upperBound
+    page: this.page,
+    size: this.size
     }
-    return this.service.getCustomersList(data.lowerBound,data.upperBound).subscribe(res=>{
+    return this.service.getCustomersList(data.page,data.size).subscribe(res=>{
     this.customerList = res.customersFilter;
     this.count = res.count;
     console.log(this.count);
@@ -140,21 +140,21 @@ export class SpringBootPractiseCustomerComponent implements OnInit {
   }
 
   public perPageChange() {
-    this.lowerBound = 1;
-    this.upperBound = this.perPage;
+    this.page = 1;
+    this.size = this.perPage;
     this.getCustomerList();
   }
 
   public nextPage() {
-    this.lowerBound = this.lowerBound+1; 
+    this.page = this.page+1; 
     this.totalRecords = this.totalRecords + this.perPage;
     console.log(this.totalRecords+'this.totalRecords')
     this.getCustomerList();
   }
 
   public prevPage() {
-    this.lowerBound = this.lowerBound-1; 
-    if(this.lowerBound==1){
+    this.page = this.page-1; 
+    if(this.page==1){
      this.totalRecords = 5;
     }
     this.getCustomerList();
