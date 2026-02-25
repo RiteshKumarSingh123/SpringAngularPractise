@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SpringBootPractiseServiceService } from '../spring-boot-practise-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -25,7 +25,7 @@ export class SpringBootPractiseCustomerComponent implements OnInit {
  customerAge!: string;
  customerId!: number;
  isEditMode: boolean = false;
- childData : number = 0;
+
 
   constructor(private service:SpringBootPractiseServiceService,
               private route:ActivatedRoute,
