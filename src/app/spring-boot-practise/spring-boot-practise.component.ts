@@ -35,6 +35,9 @@ export class SpringBootPractiseComponent implements OnInit {
 
   ngOnInit(): void {
    this.listOfCompanyDetails();
+   if (!this.service.isAuthenticated()) {
+      this.router.navigate(['/login']); 
+    }
   }
 
   public listOfCompanyDetails(){
@@ -291,6 +294,22 @@ export class SpringBootPractiseComponent implements OnInit {
 
   public getWorkerHead(){
   this.router.navigate(['worker'],{queryParams:{workerHead:'Head -> Rajni Das'}});
+  }
+
+  public logoutData(){
+  return this.service.logout().subscribe(res=>{
+    Swal.fire({
+                 icon: 'success',
+                 title: 'Success',
+                 text: 'Logged out Successfully',
+                 showConfirmButton: false,
+                 timer: 2000,
+                 customClass: {
+                   popup: 'small-swal'
+                 }
+               });
+    this.router.navigate(['/login']);
+  })
   }
 
   

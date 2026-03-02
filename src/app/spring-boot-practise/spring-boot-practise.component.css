@@ -135,3 +135,28 @@ form {
   .colorrdd{
     color: red;
   }
+
+
+  .colorrd {
+  background-color: red;       /* Red background */
+  color: white;                /* White text */
+  border: none;                /* No border */
+  padding: 8px 12px;           /* Smaller padding for both width and height */
+  font-size: 14px;             /* Smaller text size */
+  border-radius: 5px;          /* Rounded corners */
+  cursor: pointer;            /* Pointer cursor on hover */
+  transition: background-color 0.3s ease;  /* Smooth hover transition */
+  max-width: 150px;            /* Maximum width */
+  width: auto;                 /* Allow auto width but restrict it */
+  text-align: center;          /* Center text */
+}
+
+.colorrd:hover {
+  background-color: darkred;  /* Darker red when hovered */
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* Align button to the right */
+  margin-top: 10px; /* Space above the button */
+}

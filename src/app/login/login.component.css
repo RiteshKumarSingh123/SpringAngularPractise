@@ -1,0 +1,113 @@
+/* login.component.css */
+
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Login container */
+.login-container {
+  height: 100vh;              /* Full screen height */
+  display: flex;
+  justify-content: center;    /* Horizontal center */
+  align-items: center;        /* Vertical center */
+  background-color: #f4f4f4;
+}
+
+.login-form {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Heading styling */
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Input groups */
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #007bff;
+}
+
+/* Error message */
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Login button */
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+}
+
+.login-btn:disabled {
+  background-color: #d6d6d6;
+  cursor: not-allowed;
+}
+
+/* Signup link */
+.signup-link {
+  margin-top: 15px;
+}
+
+.signup-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}

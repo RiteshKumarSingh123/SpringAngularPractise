@@ -8,6 +8,10 @@ import { Observable } from 'rxjs';
 })
 export class SpringBootPractiseServiceService {
 
+  private tokenKey = 'authToken';
+
+  private refreshTokenKey = 'authToken';
+
   constructor(private http:HttpClient) { }
 
   // public getCompanyDetailsList(company:any):Observable<any> {
@@ -15,71 +19,106 @@ export class SpringBootPractiseServiceService {
   // }
 
   public getCompanyDetailsList(page: number,size:number): Observable<any> {
-    return this.http.get<any>(`http://192.168.10.186:8585/company/getCompanyDetailsList?page=${page}&size=${size}`);
+    return this.http.get<any>(`http://192.168.10.186:8085/MyBusinessPro/company/getCompanyDetailsList?page=${page}&size=${size}`);
   }
 
   public saveCompany(company:any):Observable<any> {
-    return this.http.post<any>(`http://192.168.10.186:8585/company/saveCompany`,company);
+    return this.http.post<any>(`http://192.168.10.186:8085/MyBusinessPro/company/saveCompany`,company);
   }
 
   public deleteCompanyById(companyId:number){
     const params = new HttpParams().set('companyId', companyId.toString());
-    return this.http.get<any>(`http://192.168.10.186:8585/company/deleteCompanyById?`,{params});
+    return this.http.get<any>(`http://192.168.10.186:8085/MyBusinessPro/company/deleteCompanyById?`,{params});
   }
 
   public getCompanyById(companyId:number){
     const params = new HttpParams().set('companyId', companyId.toString());
-    return this.http.get<any>(`http://192.168.10.186:8585/company/getCompanyById?`,{params});
+    return this.http.get<any>(`http://192.168.10.186:8085/MyBusinessPro/company/getCompanyById?`,{params});
   }
 
   public updateCompany(company:any):Observable<any> {
-    return this.http.post<any>(`http://192.168.10.186:8585/company/updateCompany`,company);
+    return this.http.post<any>(`http://192.168.10.186:8085/MyBusinessPro/company/updateCompany`,company);
   }
 
   public getWorkersList(page:number,size:number): Observable<any> {
-    return this.http.get<any>(`http://192.168.10.186:8585/company/getWorkersList?page=${page}&size=${size}`);
+    return this.http.get<any>(`http://192.168.10.186:8085/MyBusinessPro/company/getWorkersList?page=${page}&size=${size}`);
   }
 
   public saveWorkers(worker:any) : Observable<any> {
-    return this.http.post<any>(`http://192.168.10.186:8585/company/saveWorkers`,worker);
+    return this.http.post<any>(`http://192.168.10.186:8085/MyBusinessPro/company/saveWorkers`,worker);
   }
 
   public getWorkersById(workerId:number){
     const params = new HttpParams().set('workerId', workerId.toString());
-    return this.http.get<any>(`http://192.168.10.186:8585/company/getWorkersById?`,{params});
+    return this.http.get<any>(`http://192.168.10.186:8085/MyBusinessPro/company/getWorkersById?`,{params});
   }
 
   public deleteWorkerById(workerId:number){
     const params = new HttpParams().set('workerId', workerId.toString());
-    return this.http.get<any>(`http://192.168.10.186:8585/company/deleteWorkerById?`,{params});
+    return this.http.get<any>(`http://192.168.10.186:8085/MyBusinessPro/company/deleteWorkerById?`,{params});
   }
 
   public updateWorkers(worker:any) : Observable<any> {
-    return this.http.post<any>(`http://192.168.10.186:8585/company/updateWorkers`,worker);
+    return this.http.post<any>(`http://192.168.10.186:8085/MyBusinessPro/company/updateWorkers`,worker);
   }
 
   public getCustomersList(page:number,size:number): Observable<any> {
-    return this.http.get<any>(`http://192.168.10.186:8585/company/getCustomersList?page=${page}&size=${size}`);
+    return this.http.get<any>(`http://192.168.10.186:8085/MyBusinessPro/company/getCustomersList?page=${page}&size=${size}`);
   }
 
   public saveCustomers(customer:any) : Observable<any> {
-    return this.http.post<any>(`http://192.168.10.186:8585/company/saveCustomers`,customer);
+    return this.http.post<any>(`http://192.168.10.186:8085/MyBusinessPro/company/saveCustomers`,customer);
   }
 
   public getCustomerById(customerId:number) : Observable<any> {
     const params = new HttpParams().set('customerId', customerId.toString());
-    return this.http.get<any>(`http://192.168.10.186:8585/company/getCustomerById?`,{params});
+    return this.http.get<any>(`http://192.168.10.186:8085/MyBusinessPro/company/getCustomerById?`,{params});
   }
 
   public deleteCustomerById(customerId:number) : Observable<any> {
     const params = new HttpParams().set('customerId', customerId.toString());
-    return this.http.get<any>(`http://192.168.10.186:8585/company/deleteCustomerById?`,{params});
+    return this.http.get<any>(`http://192.168.10.186:8085/MyBusinessPro/company/deleteCustomerById?`,{params});
   }
 
   public updateCustomers(customer:any) : Observable<any> {
-    return this.http.post<any>(`http://192.168.10.186:8585/company/updateCustomers`,customer);
+    return this.http.post<any>(`http://192.168.10.186:8085/MyBusinessPro/company/updateCustomers`,customer);
   }
 
+  public login(loginData:any) : Observable<any> {
+    return this.http.post<any>(`http://localhost:8085/MyBusinessPro/bussiness/login`,loginData);
+  }
+
+  public logout() : Observable<any> {
+    return this.http.post<any>(`http://localhost:8085/MyBusinessPro/bussiness/logout`,{});
+  }
+
+  saveToken(token: string): void {
+    localStorage.setItem(this.tokenKey, token); 
+  }
+
+  
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey); 
+  }
+
+  
+  isAuthenticated(): boolean {
+    return !!this.getToken();
+  }
+
+  refreshSaveToken(token: string): void {
+    localStorage.setItem(this.refreshTokenKey, token); 
+  }
+
+  
+  getrefreshToken(): string | null {
+    return localStorage.getItem(this.refreshTokenKey); 
+  }
+
+  
+  isrefreshAuthenticated(): boolean {
+    return !!this.getToken();
+  }
 
 
 }
