@@ -308,7 +308,7 @@ export class SpringBootPractiseComponent implements OnInit {
                    popup: 'small-swal'
                  }
                });
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   })
   }
 

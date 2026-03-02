@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 
 export const appRoutes: Routes = [
   { path: '',         component: LoginComponent },  
-  { path: 'login', component: LoginComponent },
+  // { path: 'login', component: LoginComponent },
   { path: 'worker',   component: SpringBootPractiseWorkerComponent },
   { path: 'customer', component: SpringBootPractiseCustomerComponent },
   { path: 'company',  component: SpringBootPractiseComponent }
