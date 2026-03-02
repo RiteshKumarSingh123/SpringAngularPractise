@@ -101,11 +101,6 @@ export class SpringBootPractiseServiceService {
     return sessionStorage.getItem(this.tokenKey); 
   }
 
-  
-  isAuthenticated(): boolean {
-    return !!this.getToken();
-  }
-
   refreshSaveToken(token: string): void {
     sessionStorage.setItem(this.refreshTokenKey, token); 
   }
@@ -115,6 +110,11 @@ export class SpringBootPractiseServiceService {
     return sessionStorage.getItem(this.refreshTokenKey); 
   }
 
-
+  isAuthenticated(): boolean {
+  const accessToken = this.getToken();
+  const refreshToken = this.getrefreshToken();
+  
+  return !!accessToken || !!refreshToken;
+  }
 
 }
