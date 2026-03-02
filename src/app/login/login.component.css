@@ -23,11 +23,11 @@ body {
   display: flex;
   justify-content: center;    /* Horizontal center */
   align-items: center;        /* Vertical center */
-  background-color: #f4f4f4;
+  background-color: hsl(213, 23%, 32%);
 }
 
 .login-form {
-  background-color: #fff;
+  background-color: #487c7c;
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
