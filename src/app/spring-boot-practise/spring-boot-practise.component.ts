@@ -308,6 +308,9 @@ export class SpringBootPractiseComponent implements OnInit {
                    popup: 'small-swal'
                  }
                });
+
+    sessionStorage.removeItem(this.service.tokenKey);
+    sessionStorage.removeItem(this.service.refreshTokenKey);           
     this.router.navigate(['/']);
   })
   }
