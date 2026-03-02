@@ -36,7 +36,7 @@ export class SpringBootPractiseComponent implements OnInit {
   ngOnInit(): void {
    this.listOfCompanyDetails();
    if (!this.service.isAuthenticated()) {
-      this.router.navigate(['/login']); 
+      this.router.navigate(['/']); 
     }
   }
 
