@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SpringBootPractiseServiceService } from '../spring-boot-practise-service.service';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import Swal from 'sweetalert2';
+import { LogoutserviceService } from '../logoutservice.service';
 
 @Component({
   selector: 'app-spring-boot-practise',
@@ -31,11 +32,11 @@ export class SpringBootPractiseComponent implements OnInit {
   
 
   constructor(private service:SpringBootPractiseServiceService,
-    private router:Router) { }
+    private router:Router, private logoutserviceService:LogoutserviceService) { }
 
   ngOnInit(): void {
    this.listOfCompanyDetails();
-   if (!this.service.isAuthenticated()) {
+   if (!this.logoutserviceService.isAuthenticated()) {
       this.router.navigate(['/']); 
     }
   }
@@ -296,23 +297,8 @@ export class SpringBootPractiseComponent implements OnInit {
   this.router.navigate(['worker'],{queryParams:{workerHead:'Head -> Rajni Das'}});
   }
 
-  public logoutData(){
-  return this.service.logout().subscribe(res=>{
-    Swal.fire({
-                 icon: 'success',
-                 title: 'Success',
-                 text: 'Logged out Successfully',
-                 showConfirmButton: false,
-                 timer: 2000,
-                 customClass: {
-                   popup: 'small-swal'
-                 }
-               });
-
-    sessionStorage.removeItem(this.service.tokenKey);
-    sessionStorage.removeItem(this.service.refreshTokenKey);           
-    this.router.navigate(['/']);
-  })
+  public logoutDatas(){
+  this.logoutserviceService.logoutData();
   }
 
   

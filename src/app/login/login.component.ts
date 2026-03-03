@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SpringBootPractiseServiceService } from '../spring-boot-practise-service.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { LogoutserviceService } from '../logoutservice.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private service:SpringBootPractiseServiceService, private router:Router) { }
+  constructor(private service:SpringBootPractiseServiceService, private router:Router,private logoutserviceService:LogoutserviceService) { }
 
   name!: string;
   password!: string;
@@ -34,8 +35,9 @@ export class LoginComponent implements OnInit {
                         popup: 'small-swal'
                       }
                     });
-    this.service.saveToken(res.accessToken);
-    this.service.refreshSaveToken(res.refreshToken);
+    console.log(res.accessToken+"access");
+    console.log(res.refreshToken+"refresh")
+    this.logoutserviceService.saveToken(res.accessToken);
     this.router.navigate(['company']);
     
     },

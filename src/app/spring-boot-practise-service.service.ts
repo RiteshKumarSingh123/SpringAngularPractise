@@ -8,9 +8,6 @@ import { Observable } from 'rxjs';
 })
 export class SpringBootPractiseServiceService {
 
-  public tokenKey = 'authToken';
-
-  public refreshTokenKey = 'authToken';
 
   constructor(private http:HttpClient) { }
 
@@ -92,29 +89,6 @@ export class SpringBootPractiseServiceService {
     return this.http.post<any>(`http://localhost:8085/MyBusinessPro/bussiness/logout`,{});
   }
 
-  saveToken(token: string): void {
-    sessionStorage.setItem(this.tokenKey, token);
-  }
-
-  
-  getToken(): string | null {
-    return sessionStorage.getItem(this.tokenKey); 
-  }
-
-  refreshSaveToken(token: string): void {
-    sessionStorage.setItem(this.refreshTokenKey, token); 
-  }
-
-  
-  getrefreshToken(): string | null {
-    return sessionStorage.getItem(this.refreshTokenKey); 
-  }
-
-  isAuthenticated(): boolean {
-  const accessToken = this.getToken();
-  const refreshToken = this.getrefreshToken();
-  
-  return !!accessToken || !!refreshToken;
-  }
+   
 
 }
