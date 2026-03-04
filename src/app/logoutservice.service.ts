@@ -26,7 +26,7 @@ export class LogoutserviceService {
   //   sessionStorage.setItem(this.refreshTokenKey, token);
   //   const expirationTime = this.getTokenExpirationTime(token); 
   //   sessionStorage.setItem('tokenExpiry', expirationTime.toString());
-  //   this.monitorTokenExpiry(expirationTime);
+  //   this.monitorTokenExpiry2(expirationTime);
   // }
   
   getTokenExpirationTime(token: string): number {
@@ -35,15 +35,92 @@ export class LogoutserviceService {
     return decoded.exp * 1000; 
   }
   
-  monitorTokenExpiry(expirationTime: number): void {
-    const timeBeforeExpiry = expirationTime - 30000; 
+  // monitorTokenExpiry(expirationTime: number): void {
+  //   const timeBeforeExpiry = expirationTime - 30000; 
+  //   const currentTime = Date.now();
+  //   if (currentTime < timeBeforeExpiry) {
+  //     setTimeout(() => {
+  //       this.logoutData();
+  //     }, timeBeforeExpiry - currentTime);
+  //   }
+  // }
+
+  // monitorTokenExpiry(expirationTime: number): void {
+  //   const timeBeforeExpiry = expirationTime - 60000;  
+  //   const currentTime = Date.now();
+
+  //   if (currentTime < timeBeforeExpiry) {
+  //       setTimeout(() => {
+           
+  //           const userResponse = window.confirm("Your session is about to expire. Do you want to stay logged in?");
+
+  //           if (userResponse) {
+                
+  //               this.refreshData();
+  //           } else {
+                
+  //               this.logoutData();
+  //           }
+  //       }, timeBeforeExpiry - currentTime);
+  //   }
+  //   }
+
+//   monitorTokenExpiry(expirationTime: number): void {
+//     const timeBeforeExpiry = expirationTime - 90000;  
+//     const currentTime = Date.now();
+
+//     if (currentTime < timeBeforeExpiry) {
+//         setTimeout(() => {
+            
+//             const userResponse = window.confirm("Your session is about to expire. Do you want to stay logged in?");
+            
+            
+//             const autoLogoutTimer = setTimeout(() => {
+//                 this.logoutData();
+//             }, 60000); 
+
+//             if (userResponse) {
+//                 clearTimeout(autoLogoutTimer);  
+//                 this.refreshData();
+//             } else {
+//                 clearTimeout(autoLogoutTimer);  
+//                 this.logoutData();
+//             }
+//         }, timeBeforeExpiry - currentTime);
+//     }
+// }
+
+monitorTokenExpiry(expirationTime: number): void {
+    const timeBeforeExpiry = expirationTime - 90000;  
     const currentTime = Date.now();
+
     if (currentTime < timeBeforeExpiry) {
-      setTimeout(() => {
-        this.logoutData();
-      }, timeBeforeExpiry - currentTime);
+        setTimeout(() => {
+            
+            
+            Swal.fire({
+                title: 'Token Expiry Warning!',
+                text: 'Your Token is about to expire. Do you want to stay logged in?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, keep me logged in!',
+                cancelButtonText: 'Logout',
+                timer: 60000, 
+                timerProgressBar: true,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    
+                    this.refreshData();
+                } else {
+                    
+                    this.logoutData();
+                }
+            });
+
+        }, timeBeforeExpiry - currentTime);
     }
-  }
+}
+
   
   getToken(): string | null {
     return sessionStorage.getItem(this.tokenKey);
@@ -81,5 +158,20 @@ export class LogoutserviceService {
     })
     }
 
+  
+    refreshData() {
+    const oldToken = this.getToken(); 
+    if(oldToken)
+      this.service.refresh(oldToken).subscribe(
+      (response) => {
+        console.log('Token refreshed:', response.refreshedToken);
+        this.saveToken(response.refreshedToken)
+      },
+      (error) => {
+        console.error('Token refresh error:', error);
+      }
+    );
+  }
+  
 
 }

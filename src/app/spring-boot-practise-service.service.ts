@@ -89,6 +89,9 @@ export class SpringBootPractiseServiceService {
     return this.http.post<any>(`http://localhost:8085/MyBusinessPro/bussiness/logout`,{});
   }
 
-   
+  public refresh(oldToken:string) : Observable<any> {
+    const params = new HttpParams().set('oldToken', oldToken);
+    return this.http.post<any>(`http://localhost:8085/MyBusinessPro/bussiness/refresh`,{},{params});
+  } 
 
 }
