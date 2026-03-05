@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
  public onLogin(){
-    let data ={
+    const data ={
     name :this.name,
     password :this.password
     }

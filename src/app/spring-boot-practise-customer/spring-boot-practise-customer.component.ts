@@ -40,7 +40,7 @@ export class SpringBootPractiseCustomerComponent implements OnInit {
   }
 
   public getCustomerList(){
-    let data={
+    const data={
     page: this.page,
     size: this.size
     }
@@ -67,7 +67,7 @@ export class SpringBootPractiseCustomerComponent implements OnInit {
   }  
 
    public saveCustomerSubmit(){
-   let data = this.customerForm.value;
+   const data = this.customerForm.value;
    return this.service.saveCustomers(data).subscribe(res=>{
     Swal.fire({
                 icon: 'success',
@@ -86,7 +86,7 @@ export class SpringBootPractiseCustomerComponent implements OnInit {
    }
 
    public updatedCustomerSubmit(){
-   let data = this.customerForm.value;
+   const data = this.customerForm.value;
    return this.service.updateCustomers(data).subscribe(res=>{
      Swal.fire({
                 icon: 'success',
@@ -105,7 +105,7 @@ export class SpringBootPractiseCustomerComponent implements OnInit {
    }
   
   public editCustomerById(id:number){
-    let data ={
+    const data ={
     customerId : id
     }
   return this.service.getCustomerById(id).subscribe(res=>{
@@ -120,7 +120,7 @@ export class SpringBootPractiseCustomerComponent implements OnInit {
   }
 
   public getDeleteCustomerById(id:number){
-    let data ={
+    const data ={
      customerId:id
     }
   return this.service.deleteCustomerById(id).subscribe(res=>{

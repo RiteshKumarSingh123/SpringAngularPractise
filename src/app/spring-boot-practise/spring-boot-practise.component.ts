@@ -39,7 +39,7 @@ export class SpringBootPractiseComponent implements OnInit {
   }
 
   public listOfCompanyDetails(){
-    let data ={
+    const data ={
     page : this.page,
     size : this.size
     }
@@ -108,7 +108,7 @@ export class SpringBootPractiseComponent implements OnInit {
     });
     return; 
   }
-    let data ={
+    const data ={
     companyName : this.companyName,
     companyAddress : this.companyAddress,
     companyTotalMembers : this.companyTotalMembers,
@@ -140,7 +140,7 @@ export class SpringBootPractiseComponent implements OnInit {
   }
 
  public deleteCompanyData(id:number){
-    let data = {
+    const data = {
     companyId : id
     }
    return this.service.deleteCompanyById(id).subscribe(res=>{
@@ -162,7 +162,7 @@ export class SpringBootPractiseComponent implements OnInit {
   }
 
  public getCompanyDataById(id:number){
-  let data ={
+  const data ={
   companyId : id
   }
  return this.service.getCompanyById(id).subscribe(res=>{
@@ -232,7 +232,7 @@ export class SpringBootPractiseComponent implements OnInit {
     });
     return; 
   }
-    let data ={
+    const data ={
     companyId : this.companyId,
     companyName : this.companyName,
     companyAddress : this.companyAddress,

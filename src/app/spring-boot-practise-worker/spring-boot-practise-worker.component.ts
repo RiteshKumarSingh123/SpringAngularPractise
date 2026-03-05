@@ -40,7 +40,7 @@ export class SpringBootPractiseWorkerComponent implements OnInit {
   }
 
   public getWorkersList(){
-    let data ={
+    const data ={
      page : this.page,
      size : this.size
     }
@@ -60,7 +60,7 @@ export class SpringBootPractiseWorkerComponent implements OnInit {
 
 
   public onSubmit(){
-    let data = this.workerForm.value;
+    const data = this.workerForm.value;
     return this.service.saveWorkers(data).subscribe(res=>{
      Swal.fire({
             icon: 'success',
@@ -89,7 +89,7 @@ export class SpringBootPractiseWorkerComponent implements OnInit {
    })
 
   public onUpdate(){
-   let data = this.updateWorkerForm.value;
+   const data = this.updateWorkerForm.value;
    return this.service.updateWorkers(data).subscribe(res=>{
      Swal.fire({
             icon: 'success',
@@ -109,7 +109,7 @@ export class SpringBootPractiseWorkerComponent implements OnInit {
 
 
   public getWorkersById(id:number){
-    let data = {
+    const data = {
     workerId : id
     }
     return this.service.getWorkersById(id).subscribe(res=>{
@@ -125,7 +125,7 @@ export class SpringBootPractiseWorkerComponent implements OnInit {
   }
 
   public deleteWorkerById(id:number){
-    let data ={
+    const data ={
     workerId : id  
     }
    return this.service.deleteWorkerById(id).subscribe(res=>{
