@@ -135,6 +135,7 @@ export class SpringBootPractiseCustomerComponent implements OnInit {
                 }
               });
   this.getCustomerList();
+  this.customerForm.reset();
   console.log(res.status);
     })
   }

@@ -157,6 +157,12 @@ export class SpringBootPractiseComponent implements OnInit {
     this.status = res.status;
     console.log(this.status);
     this.listOfCompanyDetails();
+    this.companyName = '';
+    this.companyAddress = '';
+    this.companyTotalMembers = '';
+    this.ownerName = '';
+    this.companyProducts = '';
+    this.workingHours = '';
     })
 
   }

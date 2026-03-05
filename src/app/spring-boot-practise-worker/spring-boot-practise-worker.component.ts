@@ -141,6 +141,7 @@ export class SpringBootPractiseWorkerComponent implements OnInit {
           });
     console.log(res.status);
     this.getWorkersList();
+    this.updateWorkerForm.reset();
     }); 
   }
 
