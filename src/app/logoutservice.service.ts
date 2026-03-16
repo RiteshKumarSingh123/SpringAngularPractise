@@ -22,105 +22,77 @@ export class LogoutserviceService {
     this.monitorTokenExpiry(expirationTime);
   }
 
-  // refreshSaveToken(token: string): void {
-  //   sessionStorage.setItem(this.refreshTokenKey, token);
-  //   const expirationTime = this.getTokenExpirationTime(token); 
-  //   sessionStorage.setItem('tokenExpiry', expirationTime.toString());
-  //   this.monitorTokenExpiry2(expirationTime);
-  // }
+  refreshSaveToken(token: string): void {
+    sessionStorage.setItem(this.refreshTokenKey, token);
+    const expirationTime = this.getTokenExpirationTimeRefresh(token); 
+    sessionStorage.setItem('tokenExpiry', expirationTime.toString());
+    this.monitorTokenExpiryRefresh(expirationTime);
+  }
   
   getTokenExpirationTime(token: string): number {
     const payload = token.split('.')[1]; 
     const decoded = JSON.parse(atob(payload)); 
     return decoded.exp * 1000; 
   }
+
+  getTokenExpirationTimeRefresh(token: string): number {
+    const payload = token.split('.')[1]; 
+    const decoded = JSON.parse(atob(payload)); 
+    return decoded.exp * 1000; 
+  }
   
-  // monitorTokenExpiry(expirationTime: number): void {
-  //   const timeBeforeExpiry = expirationTime - 30000; 
-  //   const currentTime = Date.now();
-  //   if (currentTime < timeBeforeExpiry) {
-  //     setTimeout(() => {
-  //       this.logoutData();
-  //     }, timeBeforeExpiry - currentTime);
-  //   }
-  // }
+  monitorTokenExpiry(expirationTime: number): void {
+    const timeBeforeExpiry = expirationTime - 30000; 
+    const currentTime = Date.now();
+    if (currentTime < timeBeforeExpiry) {
+      setTimeout(() => {
+        this.refreshData();
+      }, timeBeforeExpiry - currentTime);
+    }
+  }
 
-  // monitorTokenExpiry(expirationTime: number): void {
-  //   const timeBeforeExpiry = expirationTime - 60000;  
-  //   const currentTime = Date.now();
+  monitorTokenExpiryRefresh(expirationTime: number): void {
+    const timeBeforeExpiry = expirationTime - 30000; 
+    const currentTime = Date.now();
+    if (currentTime < timeBeforeExpiry) {
+      setTimeout(() => {
+        this.logoutData();
+      }, timeBeforeExpiry - currentTime);
+    }
+  }
 
-  //   if (currentTime < timeBeforeExpiry) {
-  //       setTimeout(() => {
-           
-  //           const userResponse = window.confirm("Your session is about to expire. Do you want to stay logged in?");
 
-  //           if (userResponse) {
-                
-  //               this.refreshData();
-  //           } else {
-                
-  //               this.logoutData();
-  //           }
-  //       }, timeBeforeExpiry - currentTime);
-  //   }
-  //   }
-
-//   monitorTokenExpiry(expirationTime: number): void {
+// monitorTokenExpiry(expirationTime: number): void {
+  
 //     const timeBeforeExpiry = expirationTime - 90000;  
 //     const currentTime = Date.now();
 
 //     if (currentTime < timeBeforeExpiry) {
 //         setTimeout(() => {
             
-//             const userResponse = window.confirm("Your session is about to expire. Do you want to stay logged in?");
             
-            
-//             const autoLogoutTimer = setTimeout(() => {
-//                 this.logoutData();
-//             }, 60000); 
+//             Swal.fire({
+//                 title: 'Token Expiry Warning!',
+//                 text: 'Your Token is about to expire. Do you want to stay logged in?',
+//                 icon: 'warning',
+//                 showCancelButton: true,
+//                 confirmButtonText: 'Yes, keep me logged in!',
+//                 cancelButtonText: 'Logout',
+//                 timer: 60000, 
+//                 timerProgressBar: true,
+//             }).then((result) => {
+//                 if (result.isConfirmed) {
+                    
+//                     this.refreshData();
+//                 } else {
+                    
+//                     this.logoutData();
+//                 }
+//             });
 
-//             if (userResponse) {
-//                 clearTimeout(autoLogoutTimer);  
-//                 this.refreshData();
-//             } else {
-//                 clearTimeout(autoLogoutTimer);  
-//                 this.logoutData();
-//             }
 //         }, timeBeforeExpiry - currentTime);
 //     }
 // }
-
-monitorTokenExpiry(expirationTime: number): void {
-  
-    const timeBeforeExpiry = expirationTime - 90000;  
-    const currentTime = Date.now();
-
-    if (currentTime < timeBeforeExpiry) {
-        setTimeout(() => {
-            
-            
-            Swal.fire({
-                title: 'Token Expiry Warning!',
-                text: 'Your Token is about to expire. Do you want to stay logged in?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, keep me logged in!',
-                cancelButtonText: 'Logout',
-                timer: 60000, 
-                timerProgressBar: true,
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    
-                    this.refreshData();
-                } else {
-                    
-                    this.logoutData();
-                }
-            });
-
-        }, timeBeforeExpiry - currentTime);
-    }
-}
 
   
   getToken(): string | null {
@@ -128,16 +100,16 @@ monitorTokenExpiry(expirationTime: number): void {
   }
 
   
-  // getrefreshToken(): string | null {
-  //   return sessionStorage.getItem(this.refreshTokenKey);
-  // }
+  getrefreshToken(): string | null {
+    return sessionStorage.getItem(this.refreshTokenKey);
+  }
 
   
   isAuthenticated(): boolean {
     const accessToken = this.getToken();
-    // const refreshToken = this.getrefreshToken();
-    // return !!accessToken || !!refreshToken;
-    return !!accessToken;
+    const refreshToken = this.getrefreshToken();
+    return !!accessToken || !!refreshToken;
+    // return !!accessToken;
   }
 
   logoutData(){
@@ -154,7 +126,7 @@ monitorTokenExpiry(expirationTime: number): void {
                  });
       console.log("called");
       sessionStorage.removeItem(this.tokenKey);
-      // sessionStorage.removeItem(this.refreshTokenKey);           
+      sessionStorage.removeItem(this.refreshTokenKey);           
       this.router.navigate(['/']);
     })
     }

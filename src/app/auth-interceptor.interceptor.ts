@@ -19,8 +19,8 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     
 
-    // let token = this.logoutserviceService.getToken() || this.logoutserviceService.getrefreshToken();
-    let token = this.logoutserviceService.getToken() ;
+     let token = this.logoutserviceService.getToken() || this.logoutserviceService.getrefreshToken();
+    // let token = this.logoutserviceService.getToken() ;
 
     if (token) {
        

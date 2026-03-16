@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     console.log(res.accessToken+"access");
     console.log(res.refreshToken+"refresh")
     this.logoutserviceService.saveToken(res.accessToken);
-    // this.logoutserviceService.refreshSaveToken(res.accessToken);
+    this.logoutserviceService.refreshSaveToken(res.refreshToken);
     this.router.navigate(['company']);
     
     },
