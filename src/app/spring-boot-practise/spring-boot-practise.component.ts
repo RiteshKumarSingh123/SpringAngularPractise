@@ -163,6 +163,7 @@ export class SpringBootPractiseComponent implements OnInit {
     this.ownerName = '';
     this.companyProducts = '';
     this.workingHours = '';
+    this.flag = false;
     })
 
   }
@@ -180,6 +181,7 @@ export class SpringBootPractiseComponent implements OnInit {
   this.ownerName = this.company.ownerName;
   this.companyProducts = this.company.companyProducts;
   this.workingHours = this.company.workingHours;
+  this.flag = true;
   })
   }
 
@@ -267,6 +269,7 @@ export class SpringBootPractiseComponent implements OnInit {
     this.ownerName = '';
     this.companyProducts = '';
     this.workingHours = '';
+    this.flag = false;
     })
 
   }

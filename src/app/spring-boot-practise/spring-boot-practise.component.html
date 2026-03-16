@@ -55,8 +55,7 @@
 </div>
 </div>
 
-<br>
-<br>
+
 
 <table class="company-table" border="1" cellpadding="8" cellspacing="0">
   <caption>Company Information</caption>
@@ -74,8 +73,8 @@
   <tbody>
     <tr *ngFor="let data of listOfComapanyDetails">
       <td>
-        <button (click)="deleteCompanyData(data.companyId)">Delete</button>
-        {{data.companyId}}
+        <button (click)="deleteCompanyData(data.companyId)">Del</button>
+        <!-- {{data.companyId}} -->
         <button (click)="getCompanyDataById(data.companyId)">Edit</button>
       </td>
       <td>{{data.companyName}}</td>
@@ -130,11 +129,11 @@
   <input type="text" id="workingHours" name="workingHours" [(ngModel)]="workingHours" required>
 
   <!-- <button type="submit" (click)="submitCompanyData()">Submit</button> -->
-   <button *ngIf="!company.companyId" type="submit" (click)="submitCompanyData()">
+   <button *ngIf="!flag" type="submit" (click)="submitCompanyData()">
    Create
    </button>
 
-   <button *ngIf="company.companyId" type="submit" (click)="updateCompanyData()">
+   <button *ngIf="flag" type="submit" (click)="updateCompanyData()">
    Update
    </button>
 
